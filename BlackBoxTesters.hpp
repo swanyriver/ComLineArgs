@@ -13,6 +13,8 @@
 #include <list>
 #include "Dictionary.hpp"
 
+using namespace std;
+
 class DictionaryTester {
 public:
    //////////////////////test functions of dictionary /////////////////////////
