@@ -5,63 +5,45 @@
 
 using namespace std;
 
-void outputResults(string argument);
-ARGinAttor *mine;
 
 int main(int argc , char* argv[]){
 
-   //bool mycontrolflag;
-   //ArgReader::Flag myFlag = {"-m",*mycontrolflag};
-   //ArgReader::Flag flags[] = {myFlag};
 
-   cout << "before construcor is evoked" << endl;
+   bool hellorecieved;
+   bool hrecieved;
+   bool goodbyerecieved;
+   bool sixrecievd;
+   list<ARGinAttor::ControlFlag> myFlags;
+   ARGinAttor::ControlFlag hello = {"hello",&hellorecieved};
+   ARGinAttor::ControlFlag h = {"-h",&hrecieved};
+   ARGinAttor::ControlFlag goodbye = {"goodbye",&goodbyerecieved};
+   ARGinAttor::ControlFlag six = {"6",&sixrecievd};
 
-   //ArgReader myReader(int argc , char* argv[]);
-   //myReader.amIHere();
+   myFlags.push_back(hello);
+   myFlags.push_back(h);
+   myFlags.push_back(goodbye);
+   myFlags.push_back(six);
 
-   ARGinAttor localArg(argc,argv);
-   mine = &localArg;
+   ARGinAttor localArg(argc,argv,myFlags);
 
-   cout << "after Constructor is done" << endl;
+   //testing control flag, pointed bool assignment
+   cout << "\n\n  we have finised construction, now testing \n \n";
+   cout << "hello:" << hellorecieved << endl;
+   cout << "-h:" << hrecieved << endl;
+   cout << "goodbye:" << goodbyerecieved << endl;
+   cout << "6:" << sixrecievd << endl;
 
-
-
-   string arg1 = "hello";
-   string arg2 = "-h";
-   string arg3 = "goodbye";
-   string arg4 = "6";
-
-   /*list<string> testItems;
-   testItems.push_back(arg1);
-   testItems.push_back(arg2);
-   testItems.push_back(arg3);
-   testItems.push_back(arg4);
-
-   testItems.push_back("giggle");
-
-   OverAll<string> tester(testItems);
-   tester.setEnumerated(true);
-
-   tester.Add("thank you");
-   tester.Go(outputResults);*/
-
-   OverAll<string> tester(true);
-   tester.Add("hello");
-   tester.Add("goodbye");
-   tester.Add("farewell");
+   //testing anytime retrieval of args recieved
+   cout << "-v " << ((localArg.ArgumentPassedIn("-v"))? "YES, was received": " NOPE") << endl;
+   cout << "-b " << ((localArg.ArgumentPassedIn("-b"))? "YES, was received": " NOPE") << endl;
+   cout << "marry " << ((localArg.ArgumentPassedIn("marry"))? "YES, was received": " NOPE") << endl;
+   cout << "bob " << ((localArg.ArgumentPassedIn("bob"))? "YES, was received": " NOPE") << endl;
+   cout << "hello " << ((localArg.ArgumentPassedIn("bob"))? "YES, was received": " NOPE") << endl;
 
 
-   list<string> testItems;
-   testItems.push_back(arg1);
-   testItems.push_back(arg2);
-   testItems.push_back(arg3);
-   testItems.push_back(arg4);
 
-   tester.Go(outputResults);
-   tester.Go(outputResults,testItems);
+
+
 }
 
-void outputResults(string argument){
-   cout << endl << argument <<
-        ( (mine->ArgumentPassedIn(argument))? " was passed" : " was not passed");
-}
+

@@ -42,6 +42,12 @@ public:
 };
 
 
+////todo,  adapt for repetative output /////
+///todo move to another library ////////
+///todo add start and stop string messages ///
+///todo add overload call for a function that take an int as a paramater for enumaration
+///todo use printf for this so that the number can be inserted into message
+
 template <typename Type>
 class OverAll{
 private:
