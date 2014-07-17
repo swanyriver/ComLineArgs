@@ -29,11 +29,8 @@ private:
    set<string> arguments;
 
    void CheckFlag ( ControlFlag flag ) {
-      cout << "checking flag " << flag.argument << endl;
-      if ( ArgumentPassedIn( flag.argument ) ){
-         cout << "  is there" << endl;
+      if ( ArgumentPassedIn( flag.argument ) )
          *flag.controlFlag = true;
-      }
       else
          *flag.controlFlag = false;
    }
@@ -58,37 +55,19 @@ public:
 };
 
 void ARGinAttor::Initialize ( int argc , char* argv[] ) {
-   cout << "hello welcome to the  ARGinAttor constructor";
-
-   cout << "we got this many args:" << argc << endl;
 
    for ( int index = 0 ; index < argc ; index++ ) {
-      string nextArg( argv[index] );
-      cout << "trying to insert:" << nextArg << endl;
-      arguments.insert( nextArg );
+      arguments.insert( string( argv[index] ) );
    }
-
-   //for testing output set contents
-   set<string>::iterator lookup = arguments.begin();
-   for ( int index = 0 ; index < arguments.size() ; index++ ) {
-      cout << "arg " << index << ":" << *lookup << endl;
-      lookup++;
-   }
-
-   cout << "we have this many args in the set:" << arguments.size() << endl;
-   cout << "Goodbye, Leaving constructor";
 
 }
 
 void ARGinAttor::Initialize ( int argc , char* argv[] ,
       list<ControlFlag> flags ) {
 
-   //cout << "entering flag constructor" << endl;
-
    Initialize(argc, argv);
 
    while ( !flags.empty() ) {
-      //cout << "going through flags:" << flags.back().argument << endl;
       CheckFlag( flags.back() );
       flags.pop_back();
    }

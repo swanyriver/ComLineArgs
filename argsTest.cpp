@@ -38,7 +38,7 @@ int main(int argc , char* argv[]){
    cout << "-b " << ((localArg.ArgumentPassedIn("-b"))? "YES, was received": " NOPE") << endl;
    cout << "marry " << ((localArg.ArgumentPassedIn("marry"))? "YES, was received": " NOPE") << endl;
    cout << "bob " << ((localArg.ArgumentPassedIn("bob"))? "YES, was received": " NOPE") << endl;
-   cout << "hello " << ((localArg.ArgumentPassedIn("bob"))? "YES, was received": " NOPE") << endl;
+   cout << "hello " << ((localArg.ArgumentPassedIn("hello"))? "YES, was received": " NOPE") << endl;
 
 
 
